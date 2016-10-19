@@ -4,3 +4,22 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+HTTPThread	code/security/hulk.py	/^class HTTPThread(threading.Thread):$/;"	c
+MonitorThread	code/security/hulk.py	/^class MonitorThread(threading.Thread):$/;"	c
+buildblock	code/security/hulk.py	/^def buildblock(size):$/;"	f
+flag	code/security/hulk.py	/^flag=0$/;"	v
+headers_referers	code/security/hulk.py	/^headers_referers=[]$/;"	v
+headers_useragents	code/security/hulk.py	/^headers_useragents=[]$/;"	v
+host	code/security/hulk.py	/^host=''$/;"	v
+httpcall	code/security/hulk.py	/^def httpcall(url):$/;"	f
+inc_counter	code/security/hulk.py	/^def inc_counter():$/;"	f
+referer_list	code/security/hulk.py	/^def referer_list():$/;"	f
+request_counter	code/security/hulk.py	/^request_counter=0$/;"	v
+run	code/security/hulk.py	/^ def run(self):$/;"	m	class:HTTPThread
+run	code/security/hulk.py	/^ def run(self):$/;"	m	class:MonitorThread
+safe	code/security/hulk.py	/^safe=0$/;"	v
+set_flag	code/security/hulk.py	/^def set_flag(val):$/;"	f
+set_safe	code/security/hulk.py	/^def set_safe():$/;"	f
+url	code/security/hulk.py	/^url=''$/;"	v
+usage	code/security/hulk.py	/^def usage():$/;"	f
+useragent_list	code/security/hulk.py	/^def useragent_list():$/;"	f
