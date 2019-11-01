@@ -3,7 +3,10 @@
 When you deploy web app, store image on S3, using Load balancing, you may face
 with this problem:
 
-Pre-Condition: For example, in edit user information page:
+### Pre-Condition:
+
+For example, in edit user information page:
+
 + (1) User fill information into a form, and click button select file avatar (still in this form)
 + (2) User submit form, but validations fail, and Rails app rerender this form.
 + (3) User correct the form, and resubmit => Save success
@@ -14,9 +17,14 @@ The reason why you can not load file avatar is the avatar is still not saved on 
 In LB, assume that we have 2 instances.
 
 + At step (2), when validations fail, carrierwave pass cache file to form.  (through `file_cache` attribute). But this temp file is storaged in (rails_repo/public/tmp/...) of Instance 1 of LB.
-This cache file is just a unique string.
+This cache file in the form is just a unique string. (you can inspect element on chrome and take the file name)
 + At step (3), when user resbumit form, carrierwave will find temp file in storaged dir by using the unique string.
 
 But problem is, at step (3), the request can come to Instance 2 of LB => Carrierwave can not find the file with that unique string, but RECORD IS STILL SAVED.
 
 That why when you come to user detail page, you can not see avatar image, maybe a page with status 500 can be shown.
+
+### Solution:
+Using `config.cache_storage = :fog` config of carrierwave to tackle this problem. All cache file will be store in S3, so you still can access from both 2 instances.
+
+Ref: [Issue 1312](https://github.com/carrierwaveuploader/carrierwave/pull/1312)
